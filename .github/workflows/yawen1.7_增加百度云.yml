@@ -58,6 +58,11 @@ jobs:
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
           
+      - name: 同步最新的源码
+        run: |
+          git remote add openwrt https://github.com/coolsnowwolf/lede.git
+          git pull openwrt master
+          git remote -v
 
           
       - name: Update feeds
@@ -165,7 +170,7 @@ jobs:
           #CONFIG_PACKAGE_luci-app-docker=y
           CONFIG_PACKAGE_luci-app-frpc=y
           CONFIG_PACKAGE_luci-app-hd-idle=y
-          CONFIG_PACKAGE_luci-app-kodexplorer=y
+          #CONFIG_PACKAGE_luci-app-kodexplorer=y
           CONFIG_PACKAGE_luci-app-minidlna=y
           #CONFIG_PACKAGE_luci-app-openvpn=y
           CONFIG_PACKAGE_luci-app-openvpn-server=y
@@ -214,7 +219,7 @@ jobs:
           #CONFIG_PACKAGE_luci-app-samba4=y
           CONFIG_PACKAGE_luci-app-vsftpd=y
           CONFIG_PACKAGE_luci-app-watchcat=y
-          CONFIG_PACKAGE_luci-app-dockerman=y
+          #CONFIG_PACKAGE_luci-app-dockerman=y
           EOF
 
           # LuCI主题:
